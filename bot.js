@@ -5,9 +5,9 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]);
-  var hcText = "/^\!HC$/";
+  var hcRegex = "/^\!HC$/";
 
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
