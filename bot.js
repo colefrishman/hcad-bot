@@ -1,13 +1,30 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-
 var botID = process.env.BOT_ID;
+
+var jukeboxURLs = [
+    "https://www.youtube.com/watch?v=UzcpM0xK3Nw",
+    "https://www.youtube.com/watch?v=jpdKcdevgro",
+    "https://www.youtube.com/watch?v=mnPk5O1LrBk",
+    "https://www.youtube.com/watch?v=2Z1bg2EpyrI",
+    "https://www.youtube.com/watch?v=jTOdVVAX6To",
+    "https://www.youtube.com/watch?v=n2AA_j-gscU",
+    "https://www.youtube.com/watch?v=VJ50tQuDlh4",
+    "https://www.youtube.com/watch?v=uq48tsyDnQI",
+    "https://www.youtube.com/watch?v=b9aDl2GL4Ns",
+    "https://www.youtube.com/watch?v=mydlKBr8Ies",
+    "https://www.youtube.com/watch?v=HIq-vq80qbU",
+    "https://www.youtube.com/watch?v=uk3SCKbluNM",
+    "https://www.youtube.com/watch?v=XW-P1xeN9Xw",
+    "https://www.youtube.com/watch?v=18yFhhcnYEg"
+]
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       hcRegex = /^\!HC$/,
       logoRegex = /^\!logo$/,
-      dvdRegex = /^\!dvd$/
+      dvdRegex = /^\!dvd$/,
+      jukeBoxRegex = /^\!jukebox$/
 
   if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -22,6 +39,11 @@ function respond() {
   else if (request.text && dvdRegex.test(request.text)){
     this.res.writeHead(200);
     postMessage("https://colefrishman.com/dvd");
+    this.res.end();
+  }
+  else if (request.text && jukeBoxRegex.test(request.text)){
+    this.res.writeHead(200);
+    postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
     this.res.end();
   }
   else {
