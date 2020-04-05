@@ -6,7 +6,8 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       hcRegex = /^\!HC$/,
-      logoRegex = /^\!logo$/
+      logoRegex = /^\!logo$/,
+      dvdRegex = /^\!dvd$/
 
   if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -16,6 +17,11 @@ function respond() {
   else if(request.text && logoRegex.test(request.text)){
     this.res.writeHead(200);
     postMessage("https://i.imgur.com/fIXYAXM.png");
+    this.res.end();
+  }
+  else if (request.text && dvdRegex.test(request.text)){
+    this.res.writeHead(200);
+    postMessage("https://colefrishman.com/dvd");
     this.res.end();
   }
   else {
