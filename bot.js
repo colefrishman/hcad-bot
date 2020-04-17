@@ -18,13 +18,13 @@ var jukeboxURLs = [
     "https://www.youtube.com/watch?v=XW-P1xeN9Xw",
     "https://www.youtube.com/watch?v=18yFhhcnYEg"
 ]
-
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       hcRegex = /^\!HC$/,
       logoRegex = /^\!logo$/,
       dvdRegex = /^\!dvd$/,
-      jukeBoxRegex = /^\!jukebox$/
+	  jukeBoxRegex = /^\!jukebox$/,
+	  democracyRegex = /^\!democracy$/
 
   if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -44,6 +44,11 @@ function respond() {
   else if (request.text && jukeBoxRegex.test(request.text)){
     this.res.writeHead(200);
     postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
+    this.res.end();
+  }
+  else if (request.text && democracyRegex.test(request.text)){
+    this.res.writeHead(200);
+    postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
     this.res.end();
   }
   else {
