@@ -25,7 +25,7 @@ function respond() {
       dvdRegex = /^\!dvd$/,
 	  jukeBoxRegex = /^\!jukebox$/,
     democracyRegex = /^\!democracy$/,
-    fRegex = /^\!ffff$/
+    fRegex = /^\!FFFF$/
 
   if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
