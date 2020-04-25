@@ -25,7 +25,8 @@ function respond() {
     dvdCommand = "!dvd",
 	  jukeBoxCommand = "!jukebox",
     democracyCommand = "!democracy",
-    fCommand = "!F"
+    fCommand = "!F",
+    requestCommand = "!request"
 
   if(groupID != request.group_id){
     return;
@@ -55,9 +56,14 @@ function respond() {
     postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
     this.res.end();
   }
-  else if (request.text && request.text.toString() === fCommand){
+  else if (request.text && request.text.toString() === requestCommand){
     this.res.writeHead(200);
     postMessage(JSON.stringify(request));
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === fCommand){
+    this.res.writeHead(200);
+    postMessage("F");
     this.res.end();
   }
   else {
