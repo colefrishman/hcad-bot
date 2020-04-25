@@ -53,7 +53,7 @@ function respond() {
   }
   else if (request.text && request.text.toString() === fCommand){
     this.res.writeHead(200);
-    postMessage("F");
+    postMessage(request);
     this.res.end();
   }
   else {
@@ -95,7 +95,7 @@ function postMessage(message) {
   botReq.on('timeout', function(err) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
-  botReq.end(JSON.stringify(request));
+  botReq.end(JSON.stringify(body));
 }
 
 
