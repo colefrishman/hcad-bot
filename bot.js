@@ -26,8 +26,8 @@ function respond() {
 	  jukeBoxRegex = /^\!jukebox$/,
     democracyRegex = /^\!democracy$/,
     fRegex = /^\!FF$/
-    
-  if(request.text && "!HC"===request.text.toString()) {
+
+  if(request.text && request.text.toString() === "!HC") {
     this.res.writeHead(200);
     postMessage("honors chord");
     this.res.end();
@@ -52,7 +52,7 @@ function respond() {
     postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
     this.res.end();
   }
-  else if (request.text && fRegex.test(request.text)){
+  else if (request.text && request.text.toString() === "!F"){
     this.res.writeHead(200);
     postMessage("F");
     this.res.end();
