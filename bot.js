@@ -20,39 +20,39 @@ var jukeboxURLs = [
 ]
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      hcRegex = /^\!HC$/,
-      logoRegex = /^\!logo$/,
-      dvdRegex = /^\!dvd$/,
-	  jukeBoxRegex = /^\!jukebox$/,
-    democracyRegex = /^\!democracy$/,
-    fRegex = /^\!FF$/
+    hcCommand = "!HC",
+    logoCommand = "!logo",
+    dvdCommand = "!dvd",
+	  jukeBoxCommand = "!jukebox",
+    democracyCommand = "!democracy",
+    fCommand = "!F"
 
-  if(request.text && request.text.toString() === "!HC") {
+  if(request.text && request.text.toString() === hcCommand) {
     this.res.writeHead(200);
     postMessage("honors chord");
     this.res.end();
   } 
-  else if(request.text && logoRegex.test(request.text)){
+  else if(request.text && request.text.toString() === logoCommand){
     this.res.writeHead(200);
     postMessage("https://i.imgur.com/fIXYAXM.png");
     this.res.end();
   }
-  else if (request.text && dvdRegex.test(request.text)){
+  else if (request.text && request.text.toString() === dvdCommand){
     this.res.writeHead(200);
     postMessage("https://colefrishman.com/dvd");
     this.res.end();
   }
-  else if (request.text && jukeBoxRegex.test(request.text)){
+  else if (request.text && request.text.toString() === jukeBoxCommand){
     this.res.writeHead(200);
     postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
     this.res.end();
   }
-  else if (request.text && democracyRegex.test(request.text)){
+  else if (request.text && request.text.toString() === democracyCommand){
     this.res.writeHead(200);
     postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
     this.res.end();
   }
-  else if (request.text && request.text.toString() === "!F"){
+  else if (request.text && request.text.toString() === fCommand){
     this.res.writeHead(200);
     postMessage("F");
     this.res.end();
