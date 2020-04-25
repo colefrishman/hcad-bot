@@ -1,6 +1,6 @@
 var HTTPS = require('https');
-var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
+var groupID = process.env.GROUP_ID;
 
 var jukeboxURLs = [
     "https://www.youtube.com/watch?v=UzcpM0xK3Nw",
@@ -27,7 +27,10 @@ function respond() {
     democracyCommand = "!democracy",
     fCommand = "!F"
 
-  if(request.text && request.text.toString() === hcCommand) {
+  if(groupID != request.group_id){
+    return;
+  }
+  else if(request.text && request.text.toString() === hcCommand) {
     this.res.writeHead(200);
     postMessage("honors chord");
     this.res.end();
@@ -65,6 +68,7 @@ function respond() {
 }
 
 function postMessage(message) {
+
   var botResponse, options, body, botReq;
 
   botResponse = message;
