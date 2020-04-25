@@ -25,9 +25,9 @@ function respond() {
       dvdRegex = /^\!dvd$/,
 	  jukeBoxRegex = /^\!jukebox$/,
     democracyRegex = /^\!democracy$/,
-    fRegex = /^\!FFFF$/
-
-  if(request.text && hcRegex.test(request.text)) {
+    fRegex = /^\!FF$/
+    
+  if(request.text && "!HC"===request.text.toString()) {
     this.res.writeHead(200);
     postMessage("honors chord");
     this.res.end();
