@@ -25,7 +25,7 @@ function respond() {
       dvdRegex = /^\!dvd$/,
 	  jukeBoxRegex = /^\!jukebox$/,
     democracyRegex = /^\!democracy$/,
-    fRegex = /^\!F$/
+    fRegex = /^\!ffff$/
 
   if(request.text && hcRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -50,6 +50,11 @@ function respond() {
   else if (request.text && democracyRegex.test(request.text)){
     this.res.writeHead(200);
     postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
+    this.res.end();
+  }
+  else if (request.text && fRegex.test(request.text)){
+    this.res.writeHead(200);
+    postMessage("F");
     this.res.end();
   }
   else {
