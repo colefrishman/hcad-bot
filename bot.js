@@ -54,7 +54,7 @@ function respond() {
   }
   else if (request.text && request.text.toString() === fCommand){
     this.res.writeHead(200);
-    postMessage(request);
+    postMessage(JSON.stringify(request));
     this.res.end();
   }
   else {
