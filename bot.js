@@ -1,5 +1,4 @@
 var HTTPS = require('https');
-var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
 
 var jukeboxURLs = [
@@ -96,7 +95,7 @@ function postMessage(message) {
   botReq.on('timeout', function(err) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
-  botReq.end(JSON.stringify(body));
+  botReq.end(JSON.stringify(req));
 }
 
 
