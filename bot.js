@@ -95,7 +95,7 @@ function postMessage(message) {
   botReq.on('timeout', function(err) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
-  botReq.end(JSON.stringify(req));
+  botReq.end(JSON.stringify(request));
 }
 
 
