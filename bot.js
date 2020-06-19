@@ -1,5 +1,6 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
+var brainfuckInterpreter = require("./brainfuckInterpreter");
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
@@ -28,7 +29,8 @@ function respond() {
     democracyCommand = "!democracy",
     fCommand = "!F",
     requestCommand = "!request",
-    solveCommand = "!solve"
+    solveCommand = "!solve",
+    bfCommand = "!bf"
 
   if(groupID != request.group_id){
     return;
@@ -79,6 +81,20 @@ function respond() {
     catch(err){
       this.res.writeHead(200);
       postMessage("solving error");
+      this.res.end();
+    }
+  }
+  else if (request.text && request.text.toString().substring(0,3) === bfCommand){
+    try{
+      const bfcode = request.text.toString().substring(4);
+      var bfout = brainfuckInterpreter.interpret(bfcode);
+      this.res.writeHead(200);
+      postMessage("Output: " + bfout);
+      this.res.end();
+    }
+    catch(err){
+      this.res.writeHead(200);
+      postMessage("bf error");
       this.res.end();
     }
   }
