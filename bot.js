@@ -1,4 +1,6 @@
-var math = require('..')
+import {
+  atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt
+} from 'mathjs'
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
@@ -70,7 +72,7 @@ function respond() {
   }
   else if (request.text && request.text.toString().substring(0,6) === solveCommand){
     const eq = request.text.toString().substring(7);
-    var sol = math.evaluate("2+2")
+    var sol = evaluate("2+2")
     this.res.writeHead(200);
     postMessage("Solution " + sol);
     this.res.end();
