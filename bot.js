@@ -69,11 +69,18 @@ function respond() {
     this.res.end();
   }
   else if (request.text && request.text.toString().substring(0,6) === solveCommand){
-    const eq = request.text.toString().substring(7);
-    var sol = mathjs.evaluate("2+2")
-    this.res.writeHead(200);
-    postMessage("Solution " + sol);
-    this.res.end();
+    try{
+      const eq = request.text.toString().substring(7);
+      var sol = mathjs.evaluate(eq)
+      this.res.writeHead(200);
+      postMessage("Solution " + sol);
+      this.res.end();
+    }
+    catch(err){
+      this.res.writeHead(200);
+      postMessage("solving error");
+      this.res.end();
+    }
   }
   else {
     console.log("don't care");
