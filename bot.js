@@ -1,3 +1,4 @@
+var math = require('..')
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
@@ -68,8 +69,10 @@ function respond() {
     this.res.end();
   }
   else if (request.text && request.text.toString().substring(0,6) === solveCommand){
+    const eq = request.text.toString().substring(7);
+    let sol = math.evaluate("2+2")
     this.res.writeHead(200);
-    postMessage("Solution ");
+    postMessage("Solution " + sol);
     this.res.end();
   }
   else {
