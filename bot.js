@@ -69,7 +69,7 @@ function respond() {
   }
   else if (request.text && request.text.toString().contains(solveCommand)){
     this.res.writeHead(200);
-    postMessage(`Solution `);
+    postMessage("Solution ");
     this.res.end();
   }
   else {
