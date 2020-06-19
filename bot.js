@@ -1,6 +1,4 @@
-import {
-  atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt
-} from 'mathjs'
+const { evaluate } = require('math')
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
