@@ -70,7 +70,7 @@ function respond() {
   }
   else if (request.text && request.text.toString().substring(0,6) === solveCommand){
     const eq = request.text.toString().substring(7);
-    let sol = math.evaluate("2+2")
+    var sol = math.evaluate("2+2")
     this.res.writeHead(200);
     postMessage("Solution " + sol);
     this.res.end();
