@@ -69,7 +69,7 @@ function respond() {
     this.res.end();
   }
   else if (request.text && request.text.toString().contains(solveCommand)){
-    let solve = math.evaluate('2+2');
+    let sol = math.evaluate('2+2');
     this.res.writeHead(200);
     postMessage(`Solution ${sol}`);
     this.res.end();
