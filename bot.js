@@ -1,4 +1,4 @@
-var mathjs = require('math')
+var mathjs = require('mathjs')
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
