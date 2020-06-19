@@ -73,7 +73,7 @@ function respond() {
       const eq = request.text.toString().substring(7);
       var sol = mathjs.evaluate(eq)
       this.res.writeHead(200);
-      postMessage("Solution " + sol);
+      postMessage("Solution: " + sol);
       this.res.end();
     }
     catch(err){
