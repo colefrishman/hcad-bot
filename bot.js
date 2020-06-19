@@ -95,7 +95,6 @@ function respond() {
     catch(err){
       this.res.writeHead(200);
       postMessage("bf error");
-      console.error(toString(error))
       this.res.end();
     }
   }
