@@ -1,7 +1,3 @@
-
-import { sqrt } from 'mathjs';
-const math = require('..')
-
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
@@ -30,8 +26,7 @@ function respond() {
 	  jukeBoxCommand = "!jukebox",
     democracyCommand = "!democracy",
     fCommand = "!F",
-    requestCommand = "!request",
-    solveCommand = "!solve"
+    requestCommand = "!request"
 
   if(groupID != request.group_id){
     return;
@@ -69,12 +64,6 @@ function respond() {
   else if (request.text && request.text.toString() === fCommand){
     this.res.writeHead(200);
     postMessage("F");
-    this.res.end();
-  }
-  else if (request.text && request.text.toString().includes(solveCommand)){
-    this.res.writeHead(200);
-    let sol = math.evaluate('2 + 2');
-    postMessage(`Solution: ${sol}`);
     this.res.end();
   }
   else {
