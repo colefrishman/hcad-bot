@@ -67,7 +67,7 @@ function respond() {
     postMessage("F");
     this.res.end();
   }
-  else if (request.text && request.text.toString().contains(solveCommand)){
+  else if (request.text && request.text.toString().includes(solveCommand)){
     this.res.writeHead(200);
     postMessage("Solution ");
     this.res.end();
