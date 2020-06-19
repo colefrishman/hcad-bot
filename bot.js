@@ -1,6 +1,6 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
-math.import({integrate: integrate})
+mathjs.import({integrate: integrate})
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
