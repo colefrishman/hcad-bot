@@ -1,6 +1,6 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
-var brainfuckInterpreter = require("brainfuckInterpreter");
+var brainfuckInterpreter = require("brainfuck-interpreter");
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
