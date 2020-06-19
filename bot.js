@@ -1,4 +1,4 @@
-const { evaluate } = require('math')
+var mathjs = require('math')
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
@@ -70,7 +70,7 @@ function respond() {
   }
   else if (request.text && request.text.toString().substring(0,6) === solveCommand){
     const eq = request.text.toString().substring(7);
-    var sol = evaluate("2+2")
+    var sol = mathjs.evaluate("2+2")
     this.res.writeHead(200);
     postMessage("Solution " + sol);
     this.res.end();
