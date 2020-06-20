@@ -87,8 +87,9 @@ function respond() {
 	}
 	else if (request.text && request.text.toString().substring(0,3) === bfCommand){
 		try{
-			const args = bfCommand.split(' ');
+			const args = request.text.toString().split(' ');
 			const source = args[1];
+			console.log(source);
 			const memsize = parseInt(args[2]);
 			const input = args[3];
 
