@@ -1,6 +1,6 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
-var brainfuckInterpreter = require("brainfuck-interpreter");
+var bf = require('./brainfuck.js');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
@@ -86,8 +86,10 @@ function respond() {
   }
   else if (request.text && request.text.toString().substring(0,3) === bfCommand){
     try{
+      bf.config({memorySize: 256, bits: 16});
       const bfcode = request.text.toString().substring(4);
-      var bfout = brainfuckInterpreter.interpret(bfcode);
+      
+      var bfout = bf.compile(bfcode);
       this.res.writeHead(200);
       postMessage("Output: " + bfout);
       this.res.end();
