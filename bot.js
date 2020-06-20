@@ -92,7 +92,7 @@ function respond() {
 			const memsize = parseInt(args[2]);
 			const input = args[3];
 
-			let out = interpreter.interpret(source, memsize, input);
+			var out = interpreter.interpret(source, memsize, input);
 			this.res.writeHead(200);
 			postMessage("Output: " + out);
 			this.res.end();
