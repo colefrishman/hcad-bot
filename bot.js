@@ -32,78 +32,78 @@ function respond() {
 		solveCommand = "!solve",
 		bfCommand = "!bf"
 
-	if(groupID != request.group_id){
-		return;
-	}
-	else if(request.text && request.text.toString() === hcCommand) {
-		this.res.writeHead(200);
-		postMessage("honors chord");
-		this.res.end();
-	} 
-	else if(request.text && request.text.toString() === logoCommand){
-		this.res.writeHead(200);
-		postMessage("https://i.imgur.com/fIXYAXM.png");
-		this.res.end();
-	}
-	else if (request.text && request.text.toString() === dvdCommand){
-		this.res.writeHead(200);
-		postMessage("https://colefrishman.com/dvd");
-		this.res.end();
-	}
-	else if (request.text && request.text.toString() === jukeBoxCommand){
-		this.res.writeHead(200);
-		postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
-		this.res.end();
-	}
-	else if (request.text && request.text.toString() === democracyCommand){
-		this.res.writeHead(200);
-		postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
-		this.res.end();
-	}
-	else if (request.text && request.text.toString() === requestCommand){
-		this.res.writeHead(200);
-		postMessage(JSON.stringify(request));
-		this.res.end();
-	}
-	else if (request.text && request.text.toString() === fCommand){
-		this.res.writeHead(200);
-		postMessage("F");
-		this.res.end();
-	}
-	else if (request.text && request.text.toString().substring(0,6) === solveCommand){
-		try{
-			const eq = request.text.toString().substring(7);
-			var sol = mathjs.evaluate(eq)
-			this.res.writeHead(200);
-			postMessage("Solution: " + sol);
-			this.res.end();
-		}
-		catch(err){
-			this.res.writeHead(200);
-			postMessage("solving error");
-			this.res.end();
-		}
-	}
-	else if (request.text && request.text.toString().substring(0,3) === bfCommand){
-		try{
-			const bfcode = request.text.toString().substring(4);
-			var bfout = brainfuckInterpreter.interpret(bfcode);
-			this.res.writeHead(200);
-			postMessage("Output: " + bfout);
-			this.res.end();
-		}
-		catch(err){
-			this.res.writeHead(200);
-			postMessage("bf error");
-			console.log(err.message);
-			this.res.end();
-		}
-	}
-	else {
-		console.log("don't care");
-		this.res.writeHead(200);
-		this.res.end();
-	}
+  if(groupID != request.group_id){
+    return;
+  }
+  else if(request.text && request.text.toString() === hcCommand) {
+    this.res.writeHead(200);
+    postMessage("honors chord");
+    this.res.end();
+  } 
+  else if(request.text && request.text.toString() === logoCommand){
+    this.res.writeHead(200);
+    postMessage("https://i.imgur.com/fIXYAXM.png");
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === dvdCommand){
+    this.res.writeHead(200);
+    postMessage("https://colefrishman.com/dvd");
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === jukeBoxCommand){
+    this.res.writeHead(200);
+    postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === democracyCommand){
+    this.res.writeHead(200);
+    postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === requestCommand){
+    this.res.writeHead(200);
+    postMessage(JSON.stringify(request));
+    this.res.end();
+  }
+  else if (request.text && request.text.toString() === fCommand){
+    this.res.writeHead(200);
+    postMessage("F");
+    this.res.end();
+  }
+  else if (request.text && request.text.toString().substring(0,6) === solveCommand){
+    try{
+      const eq = request.text.toString().substring(7);
+      var sol = mathjs.evaluate(eq)
+      this.res.writeHead(200);
+      postMessage("Solution: " + sol);
+      this.res.end();
+    }
+    catch(err){
+      this.res.writeHead(200);
+      postMessage("solving error");
+      this.res.end();
+    }
+  }
+  else if (request.text && request.text.toString().substring(0,3) === bfCommand){
+    try{
+      const bfcode = request.text.toString().substring(4);
+      var bfout = brainfuckInterpreter.interpret(bfcode);
+      this.res.writeHead(200);
+      postMessage("Output: " + bfout);
+      this.res.end();
+    }
+    catch(err){
+      this.res.writeHead(200);
+      postMessage("bf error");
+      console.log(err.message);
+      this.res.end();
+    }
+  }
+  else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
 }
 
 function postMessage(message) {
