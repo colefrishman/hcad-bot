@@ -1,6 +1,6 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
-var bf = require('./brainfuck.js');
+var bf = require('brainfuck-compiler');
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
@@ -90,6 +90,10 @@ function respond() {
       const bfcode = request.text.toString().substring(4);
       
       var bfout = bf.compile(bfcode);
+      bfout.run('', function (num, char) {
+        buf.push(char);
+      });
+      
       this.res.writeHead(200);
       postMessage("Output: " + bfout);
       this.res.end();
