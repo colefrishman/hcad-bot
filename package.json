@@ -7,11 +7,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "brainfuck-interpreter": "^1.0.1",
     "cool-ascii-faces": "~1.3.x",
     "director": "",
     "mathjs": "^7.0.1",
-    "readline-sync": "^1.4.10"
   },
   "engines": {
     "node": "0.10.x"
