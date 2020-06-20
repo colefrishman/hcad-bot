@@ -93,12 +93,17 @@ function respond() {
 	else if (request.text && request.text.toString().substring(0,3) === bfCommand){
 		try{
 			const args = request.text.toString().split(' ');
+
+			if(!args[1] || !args[2]){
+				throw 'Bad arguments error'
+			}
+
 			const source = args[1];
 			console.log(source);
 			const memsize = parseInt(args[2]);
 			const input = args[3];
 
-			if(memsize>1000000 || source=='' || memsize==0){
+			if(memsize<1){
 				throw 'Bad arguments error'
 			}
 
