@@ -74,6 +74,11 @@ function respond() {
 	else if (request.text && request.text.toString().substring(0,6) === solveCommand){
 		try{
 			const eq = request.text.toString().substring(7);
+
+			if(!eq){
+				throw 'Bad arguments error'
+			}
+
 			var sol = mathjs.evaluate(eq)
 			this.res.writeHead(200);
 			postMessage("Solution: " + sol);
@@ -92,6 +97,10 @@ function respond() {
 			console.log(source);
 			const memsize = parseInt(args[2]);
 			const input = args[3];
+
+			if(memsize>1000000 || source=='' || memsize==0){
+				throw 'Bad arguments error'
+			}
 
 			var out = interpreter.interpret(source, memsize, input);
 			this.res.writeHead(200);
