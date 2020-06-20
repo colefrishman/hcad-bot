@@ -1,5 +1,7 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
+var interpreter = require('brainfk-interpreter');
+
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
@@ -84,7 +86,23 @@ function respond() {
 		}
 	}
 	else if (request.text && request.text.toString().substring(0,3) === bfCommand){
-		
+		try{
+			const args = bfCommand.split(' ');
+			const source = args[1];
+			const memsize = parseInt(args[2]);
+			const input = args[3];
+
+			let out = interpreter.interpret(source, memsize, input);
+			this.res.writeHead(200);
+			postMessage("Output: " + out);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("bf error");
+			console.log(err)
+			this.res.end();
+		}
 	}
 	else {
 		console.log("don't care");
