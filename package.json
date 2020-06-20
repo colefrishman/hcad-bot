@@ -9,7 +9,7 @@
   "dependencies": {
     "cool-ascii-faces": "~1.3.x",
     "director": "",
-    "mathjs": "^7.0.1",
+    "mathjs": "^7.0.1"
   },
   "engines": {
     "node": "0.10.x"
