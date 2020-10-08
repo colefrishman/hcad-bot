@@ -16,16 +16,16 @@ var jukeboxURLs = [
 ]
 
 var helpText = [
-	"!help - Provides this dialogue\n",
-	"!HC - Provides the full name of the club\n",
-	"!logo - Provides an image of the club logo\n",
-	"!dvd - Links the HC DVD\n",
-	"!jukebox - Links a random recording from the HC YouTube Channel\n",
-	"!democracy - Provides HC election information\n",
-	"!F - Provides the Hexadecimal representation of the decimal number 15\n",
-	"!request - don't use this\n",
-	"!solve <equation> - Provides the solution to the compiled equation\n",
-	"!bf <code> <memsize> <input> - Provides the output of the brainfuck program specified by the arguments\n"
+	"!help - Provides this dialogue",
+	"\n!HC - Provides the full name of the club",
+	"\n!logo - Provides an image of the club logo",
+	"\n!dvd - Links the HC DVD",
+	"\n!jukebox - Links a random recording from the HC YouTube Channel",
+	"\n!democracy - Provides HC election information",
+	"\n!F - Provides the Hexadecimal representation of the decimal number 15",
+	"\n!request - don't use this",
+	"\n!solve <equation> - Provides the solution to the compiled equation",
+	"\n!bf <code> <memsize> <input> - Provides the output of the brainfuck program specified by the argumentn"
 ]
 
 module.exports = { jukeboxURLs, helpText }
