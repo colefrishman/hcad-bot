@@ -1,28 +1,15 @@
 var mathjs = require('mathjs')
 var HTTPS = require('https');
 var interpreter = require('brainfk-interpreter');
+var resources = require('./resources.js')
 
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
 
-var jukeboxURLs = [
-		"https://www.youtube.com/watch?v=UzcpM0xK3Nw",
-		"https://www.youtube.com/watch?v=jpdKcdevgro",
-		"https://www.youtube.com/watch?v=mnPk5O1LrBk",
-		"https://www.youtube.com/watch?v=2Z1bg2EpyrI",
-		"https://www.youtube.com/watch?v=jTOdVVAX6To",
-		"https://www.youtube.com/watch?v=n2AA_j-gscU",
-		"https://www.youtube.com/watch?v=VJ50tQuDlh4",
-		"https://www.youtube.com/watch?v=uq48tsyDnQI",
-		"https://www.youtube.com/watch?v=b9aDl2GL4Ns",
-		"https://www.youtube.com/watch?v=mydlKBr8Ies",
-		"https://www.youtube.com/watch?v=HIq-vq80qbU",
-		"https://www.youtube.com/watch?v=uk3SCKbluNM",
-		"https://www.youtube.com/watch?v=XW-P1xeN9Xw",
-		"https://www.youtube.com/watch?v=18yFhhcnYEg"
-]
+
 function respond() {
 	var request = JSON.parse(this.req.chunks[0]),
+		helpCommand = "!help",
 		hcCommand = "!HC",
 		logoCommand = "!logo",
 		dvdCommand = "!dvd",
@@ -36,6 +23,11 @@ function respond() {
 	if(groupID != request.group_id){
 		return;
 	}
+	else if(request.text && request.text.toString() === helpCommand) {
+		this.res.writeHead(200);
+		postMessage(resources.helpText.toString());
+		this.res.end();
+	} 
 	else if(request.text && request.text.toString() === hcCommand) {
 		this.res.writeHead(200);
 		postMessage("honors chord");
@@ -52,6 +44,7 @@ function respond() {
 		this.res.end();
 	}
 	else if (request.text && request.text.toString() === jukeBoxCommand){
+		const jukeboxURLs = resources.jukeboxURLs;
 		this.res.writeHead(200);
 		postMessage(jukeboxURLs[Math.floor(Math.random() * jukeboxURLs.length)]);
 		this.res.end();
