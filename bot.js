@@ -23,15 +23,15 @@ function respond() {
 	if(groupID != request.group_id){
 		return;
 	}
-	else if(request.text && request.text.toString() === helpCommand) {
+	else if(request.text && request.text.toString().substring(0,helpCommand.length) === helpCommand) {
 		try{
 			const args = request.text.toString().split(' ');
 			var out
-			if(!args[1]){
-				out = resources.GetAllHelp()
+			if(args[1]){
+				out = resources.GetHelp(args[1])
 			}
 			else{
-				out = resources.GetHelp(args[1])
+				out = resources.GetAllHelp()
 			}
 			
 			this.res.writeHead(200);
@@ -45,7 +45,7 @@ function respond() {
 			this.res.end();
 		}
 	} 
-	else if(request.text && request.text.toString() === hcCommand) {
+	else if(request.text && request.text.toString().substring(0,hcCommand.length) === hcCommand) {
 		try{
 			const args = request.text.toString().split(' ');
 			var out
