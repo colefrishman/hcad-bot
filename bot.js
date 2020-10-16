@@ -88,10 +88,29 @@ function respond() {
 		postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
 		this.res.end();
 	}
-	else if (request.text && request.text.toString() === requestCommand){
-		this.res.writeHead(200);
-		postMessage(JSON.stringify(request));
-		this.res.end();
+	else if (request.text && request.text.toString().substring(0,req.length) === requestCommand){
+		
+
+		try{
+			const args = request.text.toString().split(' ');
+			var out
+			if(args[1] === "-r"){
+				out = "!request"
+			}
+			else{
+				out = JSON.stringify(request)
+			}
+			
+			this.res.writeHead(200);
+			postMessage(out);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("hc error");
+			console.log(err)
+			this.res.end();
+		}
 	}
 	else if (request.text && request.text.toString() === fCommand){
 		this.res.writeHead(200);
