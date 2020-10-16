@@ -20,7 +20,7 @@ function respond() {
 		solveCommand = "!solve",
 		bfCommand = "!bf"
 
-	if(groupID != request.group_id){
+	if(groupID != request.group_id || request.sender_type == "bot"){
 		return;
 	}
 	else if(request.text && request.text.toString().substring(0,helpCommand.length) === helpCommand) {
@@ -173,7 +173,6 @@ function respond() {
 function postMessage(message) {
 
 	var botResponse, options, body, botReq;
-
 	botResponse = message;
 
 	options = {
