@@ -88,13 +88,11 @@ function respond() {
 		postMessage("After the nominations process only 5 people accepted positions so they will be our eboard for next year!");
 		this.res.end();
 	}
-	else if (request.text && request.text.toString().substring(0,req.length) === requestCommand){
-		
-
+	else if (request.text && request.text.toString().substring(0,requestCommand.length) === requestCommand){
 		try{
 			const args = request.text.toString().split(' ');
 			var out
-			if(args[1] === "-r"){
+			if(args[1] === "-m"){
 				out = "!request"
 			}
 			else{
