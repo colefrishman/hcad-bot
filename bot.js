@@ -24,14 +24,48 @@ function respond() {
 		return;
 	}
 	else if(request.text && request.text.toString() === helpCommand) {
-		this.res.writeHead(200);
-		postMessage(resources.helpText.toString());
-		this.res.end();
+		try{
+			const args = request.text.toString().split(' ');
+			var out
+			if(!args[1]){
+				out = resources.GetAllHelp()
+			}
+			else{
+				out = resources.GetHelp(args[1])
+			}
+			
+			this.res.writeHead(200);
+			postMessage(out);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("help error");
+			console.log(err)
+			this.res.end();
+		}
 	} 
 	else if(request.text && request.text.toString() === hcCommand) {
-		this.res.writeHead(200);
-		postMessage("honors chord");
-		this.res.end();
+		try{
+			const args = request.text.toString().split(' ');
+			var out
+			if(args[1] === "-r"){
+				out = resources.GetHCRand()
+			}
+			else{
+				out = "honors chord"
+			}
+			
+			this.res.writeHead(200);
+			postMessage(out);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("hc error");
+			console.log(err)
+			this.res.end();
+		}
 	} 
 	else if(request.text && request.text.toString() === logoCommand){
 		this.res.writeHead(200);
