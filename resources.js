@@ -27,7 +27,8 @@ const helpCommands = [
 	"!F",
 	"!request",
 	"!solve <equation>",
-	"!bf"
+	"!bf",
+	"!maxtime"
 ]
 
 const helpDefs = [
@@ -40,7 +41,8 @@ const helpDefs = [
 	"Provides the Hexadecimal representation of the decimal number 15",
 	"don't use this",
 	"Provides the solution to the compiled equation",
-	"Provides the output of the brainfuck program specified by the arguments"
+	"Provides the output of the brainfuck program specified by the arguments",
+	"Provides max time"
 ]
 
 const helpArgs = [
@@ -53,7 +55,8 @@ const helpArgs = [
 	"",
 	"",
 	"<equation>",
-	"<code> <memsize> <input (opt)>"
+	"<code> <memsize> <input (opt)>",
+	""
 ]
 
 var helpMap = new Map()
