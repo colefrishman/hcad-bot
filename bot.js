@@ -18,7 +18,8 @@ function respond() {
 		fCommand = "!F",
 		requestCommand = "!request",
 		solveCommand = "!solve",
-		bfCommand = "!bf"
+		bfCommand = "!bf",
+		maxtimeCommand = "!maxtime"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
 		return;
@@ -162,6 +163,11 @@ function respond() {
 			console.log(err)
 			this.res.end();
 		}
+	}
+	else if (request.text && request.text.toString() === maxtimeCommand){
+		this.res.writeHead(200);
+		postMessage("4:00 am to 6:00 am");
+		this.res.end();
 	}
 	else {
 		console.log("don't care");
