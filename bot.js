@@ -19,7 +19,8 @@ function respond() {
 		requestCommand = "!request",
 		solveCommand = "!solve",
 		bfCommand = "!bf",
-		maxtimeCommand = "!maxtime"
+		maxtimeCommand = "!maxtime",
+		superCommand = "!super"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
 		return;
@@ -160,6 +161,25 @@ function respond() {
 		catch(err){
 			this.res.writeHead(200);
 			postMessage("bf error");
+			console.log(err)
+			this.res.end();
+		}
+	}
+	else if (request.text && request.text.toString().substring(0,6) === superCommand){
+		try{
+			const arg = request.text.toString().slice(7).toLowerCase();
+
+			if(!arg){
+				throw 'Bad arguments error'
+			}
+
+			this.res.writeHead(200);
+			postMessage("super duper " + arg);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("super error");
 			console.log(err)
 			this.res.end();
 		}
