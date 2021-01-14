@@ -20,7 +20,9 @@ function respond() {
 		solveCommand = "!solve",
 		bfCommand = "!bf",
 		maxtimeCommand = "!maxtime",
-		superCommand = "!super"
+		superCommand = "!super",
+		sourceCommand = "!source",
+		rrCommand = "!rr"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
 		return;
@@ -187,6 +189,16 @@ function respond() {
 	else if (request.text && request.text.toString() === maxtimeCommand){
 		this.res.writeHead(200);
 		postMessage("4:00 am to 6:00 am");
+		this.res.end();
+	}
+	else if (request.text && request.text.toString() === sourceCommand){
+		this.res.writeHead(200);
+		postMessage("this code is awful\n https://github.com/colefrishman/hcad-bot");
+		this.res.end();
+	}
+	else if (request.text && request.text.toString() === rrCommand){
+		this.res.writeHead(200);
+		postMessage("https://www.youtube.com/watch/dQw4w9WgXcQ");
 		this.res.end();
 	}
 	else {

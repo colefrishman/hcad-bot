@@ -26,10 +26,12 @@ const helpCommands = [
 	"!democracy",
 	"!F",
 	"!request",
-	"!solve <equation>",
+	"!solve",
 	"!bf",
 	"!maxtime",
-	"!super"
+	"!super",
+	"!source",
+	"!rr"
 ]
 
 const helpDefs = [
@@ -44,7 +46,9 @@ const helpDefs = [
 	"Provides the solution to the compiled equation",
 	"Provides the output of the brainfuck program specified by the arguments",
 	"Provides max time",
-	"super duper"
+	"super duper",
+	"my source code",
+	"rr"
 ]
 
 const helpArgs = [
@@ -59,7 +63,9 @@ const helpArgs = [
 	"<equation>",
 	"<code> <memsize> <input (opt)>",
 	"",
-	"<text>"
+	"<text>",
+	"",
+	""
 ]
 
 var helpMap = new Map()
