@@ -50,7 +50,7 @@ function respond() {
 			this.res.end();
 		}
 	} 
-	else if(request.text && request.text.toString().substring(0,hcCommand.length) === hcCommand) {
+	else if(request.text && request.text.toString().substring(0,hcCommand.length).toLowerCase() === hcCommand.toLowerCase()) {
 		try{
 			const args = request.text.toString().split(' ');
 			var out
@@ -202,8 +202,7 @@ function respond() {
 		postMessage("https://www.youtube.com/watch/dQw4w9WgXcQ");
 		this.res.end();
 	}
-	else if (request.text && (request.text.toString().substring(0,quoteCommand.length) === quoteCommand ||
-	 request.text.toString().substring(0,quoteCommand.length).toLowerCase() === quoteCommand.toLowerCase())){
+	else if (request.text && (request.text.toString().substring(0,quoteCommand.length).toLowerCase() === quoteCommand.toLowerCase())){
 		try{
 			const arg = request.text.toString().slice(quoteCommand.length+1);
 
