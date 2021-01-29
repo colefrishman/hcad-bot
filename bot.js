@@ -26,7 +26,7 @@ function respond() {
 		quoteCommand = "Don't quote me on this, but"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
-		return;
+		this.res.end();
 	}
 	else if(request.text && request.text.toString().substring(0,helpCommand.length) === helpCommand) {
 		try{
@@ -203,7 +203,7 @@ function respond() {
 		this.res.end();
 	}
 	else if (request.text && (request.text.toString().substring(0,quoteCommand.length) === quoteCommand ||
-	 request.text.toString().substring(0,quoteCommand.length) === quoteCommand.toLowerCase())){
+	 request.text.toString().substring(0,quoteCommand.length).toLowerCase() === quoteCommand.toLowerCase())){
 		try{
 			const arg = request.text.toString().slice(quoteCommand.length+1);
 
