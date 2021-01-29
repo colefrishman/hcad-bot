@@ -31,7 +31,8 @@ const helpCommands = [
 	"!maxtime",
 	"!super",
 	"!source",
-	"!rr"
+	"!rr",
+	"Don't quote me on this, but"
 ]
 
 const helpDefs = [
@@ -48,7 +49,8 @@ const helpDefs = [
 	"Provides max time",
 	"super duper",
 	"my source code",
-	"rr"
+	"rr",
+	"Quotes you on this"
 ]
 
 const helpArgs = [
@@ -65,7 +67,8 @@ const helpArgs = [
 	"",
 	"<text>",
 	"",
-	""
+	"",
+	"<quote>"
 ]
 
 var helpMap = new Map()

@@ -202,9 +202,10 @@ function respond() {
 		postMessage("https://www.youtube.com/watch/dQw4w9WgXcQ");
 		this.res.end();
 	}
-	else if (request.text && request.text.toString().substring(0,quoteCommand.length) === quoteCommand){
+	else if (request.text && (request.text.toString().substring(0,quoteCommand.length) === quoteCommand ||
+	 request.text.toString().substring(0,quoteCommand.length) === quoteCommand.toLowerCase())){
 		try{
-			const arg = request.text.toString().slice(quoteCommand.length+1).toLowerCase();
+			const arg = request.text.toString().slice(quoteCommand.length+1);
 
 			if(!arg){
 				throw 'Bad arguments error'
@@ -216,7 +217,7 @@ function respond() {
 		}
 		catch(err){
 			this.res.writeHead(200);
-			postMessage("super error");
+			postMessage("quote error");
 			console.log(err)
 			this.res.end();
 		}
