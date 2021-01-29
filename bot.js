@@ -22,7 +22,8 @@ function respond() {
 		maxtimeCommand = "!maxtime",
 		superCommand = "!super",
 		sourceCommand = "!source",
-		rrCommand = "!rr"
+		rrCommand = "!rr",
+		quoteCommand = "Don't quote me on this, but"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
 		return;
@@ -200,6 +201,25 @@ function respond() {
 		this.res.writeHead(200);
 		postMessage("https://www.youtube.com/watch/dQw4w9WgXcQ");
 		this.res.end();
+	}
+	else if (request.text && request.text.toString().substring(0,quoteCommand.length) === quoteCommand){
+		try{
+			const arg = request.text.toString().slice(quoteCommand.length+1).toLowerCase();
+
+			if(!arg){
+				throw 'Bad arguments error'
+			}
+
+			this.res.writeHead(200);
+			postMessage(`\"${arg}\" - ${request.name}`);
+			this.res.end();
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("super error");
+			console.log(err)
+			this.res.end();
+		}
 	}
 	else {
 		console.log("don't care");
