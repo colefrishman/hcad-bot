@@ -23,6 +23,7 @@ function respond() {
 		superCommand = "!super",
 		sourceCommand = "!source",
 		rrCommand = "!rr",
+		reginaldCommand = "!alternatingtuesday",
 		quoteCommand = "Don't quote me on this, but"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
@@ -200,6 +201,11 @@ function respond() {
 	else if (request.text && request.text.toString() === rrCommand){
 		this.res.writeHead(200);
 		postMessage("https://www.youtube.com/watch/dQw4w9WgXcQ");
+		this.res.end();
+	}
+	else if (request.text && request.text.toString() === reginaldCommand){
+		this.res.writeHead(200);
+		postMessage("Hi Reginald!");
 		this.res.end();
 	}
 	else if (request.text && (request.text.toString().substring(0,quoteCommand.length).toLowerCase() === quoteCommand.toLowerCase())){

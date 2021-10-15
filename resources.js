@@ -32,6 +32,7 @@ const helpCommands = [
 	"!super",
 	"!source",
 	"!rr",
+	"!alternatingtuesday",
 	"Don't quote me on this, but"
 ]
 
@@ -50,6 +51,7 @@ const helpDefs = [
 	"super duper",
 	"my source code",
 	"rr",
+	"This Reginald. But remember, he's only here on alternating Tuesdays",
 	"Quotes you on this"
 ]
 
