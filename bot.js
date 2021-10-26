@@ -205,7 +205,7 @@ function respond() {
 	}
 	else if (request.text && request.text.toString() === reginaldCommand){
 		this.res.writeHead(200);
-		postMessage("Hi Reginald!");
+		postMessage("Hi, Reginald!");
 		this.res.end();
 	}
 	else if (request.text && (request.text.toString().substring(0,quoteCommand.length).toLowerCase() === quoteCommand.toLowerCase())){
