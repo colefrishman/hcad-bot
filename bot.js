@@ -235,6 +235,8 @@ function respond() {
 		try{
 			const args = request.text.toString().split(' ');
 			var out
+			let me = this;
+
 
 			var con = mysql.createConnection({
 				user: process.env.MY_SQL_USER,
@@ -258,7 +260,6 @@ function respond() {
 				con.query(`SELECT * FROM punjar`, function (err, result) {
 					if (err) throw err;
 					returnValue(result[0].value)
-					con.end()
 				});
 			}
 			  
@@ -267,15 +268,15 @@ function respond() {
 				con.query(`UPDATE punjar SET value = ${x} WHERE name = 'Patrick'`, function (err, result) {
 					if (err) throw err;
 					returnValue(x)
-					con.end()
 				});
 			}
 			  
 			function returnValue(value) {
+				con.end();
 				out = `The pun jar now has ${value} monetary units`;
-				this.res.writeHead(200);
+				me.res.writeHead(200);
 				postMessage(out);
-				this.res.end();
+				me.res.end();
 			}
 		}
 		catch(err){
