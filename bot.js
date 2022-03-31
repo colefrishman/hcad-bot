@@ -2,6 +2,9 @@ var mathjs = require('mathjs')
 var HTTPS = require('https');
 var interpreter = require('brainfk-interpreter');
 var resources = require('./resources.js')
+var mysql = require('mysql');
+require('dotenv').config();
+
 
 var botID = process.env.BOT_ID;
 var groupID = process.env.GROUP_ID;
@@ -24,6 +27,7 @@ function respond() {
 		sourceCommand = "!source",
 		rrCommand = "!rr",
 		reginaldCommand = "!alternatingtuesday",
+		punjarCommand = "!punjar",
 		quoteCommand = "Don't quote me on this, but"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
@@ -72,7 +76,7 @@ function respond() {
 			console.log(err)
 			this.res.end();
 		}
-	} 
+	}
 	else if(request.text && request.text.toString() === logoCommand){
 		this.res.writeHead(200);
 		postMessage("https://i.imgur.com/fIXYAXM.png");
@@ -223,6 +227,60 @@ function respond() {
 		catch(err){
 			this.res.writeHead(200);
 			postMessage("quote error");
+			console.log(err)
+			this.res.end();
+		}
+	}
+	else if(request.text && request.text.toString().substring(0,punjarCommand.length).toLowerCase() === punjarCommand.toLowerCase()) {
+		try{
+			const args = request.text.toString().split(' ');
+			var out
+
+			var con = mysql.createConnection({
+				user: process.env.MY_SQL_USER,
+				password: process.env.MY_SQL_PW,
+				host: process.env.MY_SQL_HOST,
+				port: process.env.MY_SQL_PORT,
+				database: process.env.MY_SQL_DB
+			});
+			
+			con.connect(function(err) {
+				if (err) throw err;
+			})
+
+			if(args[1] == "deposit"){
+				con.query("SELECT * FROM punjar", function (err, result) {
+					if (err) throw err;
+					increaseValue(result[0].value)
+				});
+			}
+			else{
+				con.query(`SELECT * FROM punjar`, function (err, result) {
+					if (err) throw err;
+					returnValue(result[0].value)
+					con.end()
+				});
+			}
+			  
+			function increaseValue(value) {
+				let x = value+1;
+				con.query(`UPDATE punjar SET value = ${x} WHERE name = 'Patrick'`, function (err, result) {
+					if (err) throw err;
+					returnValue(x)
+					con.end()
+				});
+			}
+			  
+			function returnValue(value) {
+				out = `The pun jar now has ${value} monetary units`;
+				this.res.writeHead(200);
+				postMessage(out);
+				this.res.end();
+			}
+		}
+		catch(err){
+			this.res.writeHead(200);
+			postMessage("hc error");
 			console.log(err)
 			this.res.end();
 		}
