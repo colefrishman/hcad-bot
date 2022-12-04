@@ -28,7 +28,8 @@ function respond() {
 		rrCommand = "!rr",
 		reginaldCommand = "!alternatingtuesday",
 		punjarCommand = "!punjar",
-		quoteCommand = "Don't quote me on this, but"
+		quoteCommand = "Don't quote me on this, but",
+		jcCommand = "!jc"
 
 	if(groupID != request.group_id || request.sender_type == "bot"){
 		this.res.end();
@@ -286,8 +287,12 @@ function respond() {
 			this.res.end();
 		}
 	}
+	else if (request.text && request.text.toString() === jcCommand){
+		this.res.writeHead(200);
+		postMessage("jesus chords");
+		this.res.end();
+	}
 	else {
-		console.log("don't care");
 		this.res.writeHead(200);
 		this.res.end();
 	}

@@ -33,7 +33,8 @@ const helpCommands = [
 	"!source",
 	"!rr",
 	"!alternatingtuesday",
-	"Don't quote me on this, but"
+	"Don't quote me on this, but",
+	"!jc"
 ]
 
 const helpDefs = [
@@ -51,8 +52,9 @@ const helpDefs = [
 	"super duper",
 	"my source code",
 	"rr",
-	"This Reginald. But remember, he's only here on alternating Tuesdays",
-	"Quotes you on this"
+	"This is Reginald. But remember, he's only here on alternating Tuesdays",
+	"Quotes you on this",
+	"Our lord and savior"
 ]
 
 const helpArgs = [
@@ -70,7 +72,8 @@ const helpArgs = [
 	"<text>",
 	"",
 	"",
-	"<quote>"
+	"<quote>",
+	""
 ]
 
 var helpMap = new Map()
